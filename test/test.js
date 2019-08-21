@@ -7,7 +7,7 @@ contract('DocStamp', function(accounts) {
     try {
       const instance = await DocStamp.deployed()
 
-      await instance.issueCertificate("rahul", "developer")
+      await instance.issueCertificate("John", "graduate")
 
       const authority = await instance.owningAuthority()
       assert.equal(authority, account)
@@ -22,14 +22,12 @@ contract('DocStamp', function(accounts) {
     try {
       const instance = await DocStamp.deployed()
 
-      const verified = await instance.verifyCertificate("rahul", "developer", "0x3893c7e8b4091794fa54e4b22cc506042f2b00e07d965aa3927aff7f12163955")
+      const verified = await instance.verifyCertificate("John", "graduate", "0x837e31a66aa8eec0d7adfd41f84175803ddcae69afd451598f2672f652b2c153")
 
       assert.equal(verified, true)
     } catch(error) {
       assert.equal(error, undefined)
     }
   })
-
-
 })
 
